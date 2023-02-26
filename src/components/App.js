@@ -6,7 +6,7 @@ const App = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [laps, setLaps] = useState([]);
   const [running,setRunning]=useState(false);
-  const[lapvisible,setlapVisible]=useState(false);
+  const[lapVisible,setlapVisible]=useState(false);
 
      useEffect(()=>{
        let interval;
@@ -34,12 +34,13 @@ const App = () => {
           <button className="reset-btn" onClick={()=>{setRunning(false),setCurrentTime(0),setlapVisible(false),setLaps([])}}>RESET</button>
         </section>
       </section>
-      <section className='lap-section'>
+      {lapVisible&&<section className='lap-section'>
         <h2>Laps</h2>
         <section className='laps'>
           {laps.map((item)=><p>{item.toFixed(3)}</p>)}
+
         </section>
-      </section>
+      </section>}
     </div>
   )
 }
